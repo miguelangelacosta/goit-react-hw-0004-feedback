@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Notification from './Notification';
-import Section from './Section';
 import Statistics from './Statistics';
 
 function App() {
-  const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
+  const [feedback, setFeedback] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
 
   const handleFeedback = (option) => {
     setFeedback((prevFeedback) => ({
@@ -19,11 +23,11 @@ function App() {
 
   return (
     <div>
-      <Section title="Leave your feedback">
+      <Section title="Deje sus comentarios">
         <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={handleFeedback} />
       </Section>
       {totalFeedback > 0 ? (
-        <Section title="Statistics">
+        <Section title="Estadísticas">
           <Statistics
             good={feedback.good}
             neutral={feedback.neutral}
@@ -33,10 +37,10 @@ function App() {
           />
         </Section>
       ) : (
-        <Notification message="No feedback given" />
+        <Notification mensaje="No se han dado comentarios" />
       )}
     </div>
   );
 }
 
- export  default App;
+export default App;
